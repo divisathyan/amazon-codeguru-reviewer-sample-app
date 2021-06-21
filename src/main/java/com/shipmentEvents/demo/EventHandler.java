@@ -73,7 +73,7 @@ public class EventHandler implements RequestHandler<ScheduledEvent, String> {
         EventHandler
             .getS3Client().putObject(Constants.SUMMARY_BUCKET, summaryUpdateName, latestStatusForTrackingNumber.toString());
 
-        long expirationTime = System.currentTimeMillis() + Duration.ofMinutes(1).toMillis();
+        /*long expirationTime = System.currentTimeMillis() + Duration.ofMinutes(1).toMillis();
         while(System.currentTimeMillis() < expirationTime) {
             if (s3Client.doesObjectExist(Constants.SUMMARY_BUCKET, summaryUpdateName)) {
                 break;
@@ -89,7 +89,7 @@ public class EventHandler implements RequestHandler<ScheduledEvent, String> {
             logger.log("All updates successfully processed");
         } else {
             throw new RuntimeException("Failed to write summary status, will be retried in 15 minutes");
-        }
+        }*/
 
     }
 
