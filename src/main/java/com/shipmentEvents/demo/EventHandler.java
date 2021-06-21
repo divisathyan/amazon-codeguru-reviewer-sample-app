@@ -73,23 +73,23 @@ public class EventHandler implements RequestHandler<ScheduledEvent, String> {
         EventHandler
             .getS3Client().putObject(Constants.SUMMARY_BUCKET, summaryUpdateName, latestStatusForTrackingNumber.toString());
 
-        /*long expirationTime = System.currentTimeMillis() + Duration.ofMinutes(1).toMillis();
+        long expirationTime = System.currentTimeMillis() + Duration.ofMinutes(1).toMillis();
         while(System.currentTimeMillis() < expirationTime) {
             if (s3Client.doesObjectExist(Constants.SUMMARY_BUCKET, summaryUpdateName)) {
                 break;
             }
             logger.log("waiting for file to be created " + summaryUpdateName);
             Thread.sleep(1000);
-        }*/
+        }
 
         // Before we delete the shipment updates make sure the summary update file exists
-        /*if (EventHandler
+        if (EventHandler
             .getS3Client().doesObjectExist(Constants.SUMMARY_BUCKET, summaryUpdateName)) {
             deleteProcessedFiles(filesToDelete);
             logger.log("All updates successfully processed");
         } else {
             throw new RuntimeException("Failed to write summary status, will be retried in 15 minutes");
-        }*/
+        }
 
     }
 
