@@ -80,10 +80,10 @@ public class EventHandler implements RequestHandler<ScheduledEvent, String> {
             }
             logger.log("waiting for file to be created " + summaryUpdateName);
             Thread.sleep(1000);
-        }*/
+        }
 
         // Before we delete the shipment updates make sure the summary update file exists
-        /*if (EventHandler
+        if (EventHandler
             .getS3Client().doesObjectExist(Constants.SUMMARY_BUCKET, summaryUpdateName)) {
             deleteProcessedFiles(filesToDelete);
             logger.log("All updates successfully processed");
